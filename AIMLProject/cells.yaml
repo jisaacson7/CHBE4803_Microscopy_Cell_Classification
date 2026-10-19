@@ -1,4 +1,4 @@
-path: /storage/ice1/9/9/jisaacson7/CHBE4803/AIMLProject/dataset # This must be an absolute path
+path: /home/hice1/jisaacson7/scratch/CHBE4803/CHBE4803_Microscopy_Cell_Classification/AIMLProject/dataset # This must be an absolute path
 train: images/train_split
 val: images/val_split
 
@@ -12,16 +12,18 @@ names:
 
 # Data Augmentation
 augment: True     # Enable augmentation
-hsv_h: 0.015      # Hue (color) augmentation
-hsv_s: 0.7        # Saturation augmentation
-hsv_v: 0.4        # Value (brightness) augmentation
-degrees: 0.0      # Rotation augmentation
-translate: 0.1    # Translation augmentation
-scale: 0.5        # Scaling augmentation
-shear: 0.0        # Shear augmentation
-perspective: 0.0  # Perspective augmentation
-flipud: 0.0       # Flip up-down augmentation
-fliplr: 0.5       # Flip left-right augmentation
-mosaic: 1.0       # Mosaic augmentation
-mixup: 0.0        # MixUp augmentation
-copy_paste: 0.0   # Copy-paste augmentation
+# Color & Lighting (Tailored for Brightfield)
+hsv_h: 0.0         # DESTROY HUE SHIFTING. Brightfield images do not have color channels.
+hsv_s: 0.0         # DESTROY SATURATION. Keeps the model from looking for color saturation.
+hsv_v: 0.3         # Keep at 0.3. This simulates changes in the microscope lamp brightness.
+
+# Contrast & Clarity (Add if using custom hyp profiles)
+clahe: 0.5         # Highly recommended for brightfield. Automatically normalizes 
+                   # low-contrast cell boundaries against a bright background.
+
+# Geometry (Full orientation freedom)
+degrees: 180.0     # Full 360-degree rotation.
+flipud: 0.5        # Vertical flips.
+fliplr: 0.5        # Horizontal flips.
+mosaic: 1.0        # Stays at 1.0. Forces the model to locate cells at different scales.
+
