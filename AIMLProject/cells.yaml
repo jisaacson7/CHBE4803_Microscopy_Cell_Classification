@@ -4,11 +4,11 @@ val: images/val_split
 
 # Classes
 names:
-  0: Adhered Singlets
-  1: Suspended Multiplets
+  0: Adhered Multiplets
+  1: Adhered Singlets
   2: Debris
-  3: Suspended Singlets
-  4: Adhered Multiplets
+  3: Suspended Multiplets
+  4: Suspended Singlets
 
 # Data Augmentation
 augment: True     # Enable augmentation

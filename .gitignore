@@ -1,0 +1,6 @@
+AIMLProject/runs/
+AIMLProject/dataset_split/
+AIMLProject/dataset/
+*.pt
+.ipynb_checkpoints/
+__pycache__/
